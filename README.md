@@ -17,7 +17,7 @@
 ![img_6.png](pics/img_6.png)
 # вывод:
 ![img_7.png](pics/img_7.png)
-# 5 задние:
+# 5 задание:
 ![img_8.png](pics/img_8.png)
 # вывод:
 ![img_9.png](pics/img_9.png)
