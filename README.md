@@ -21,4 +21,8 @@
 ![img_8.png](pics/img_8.png)
 # вывод:
 ![img_9.png](pics/img_9.png)
-
+# *6 задание:
+![img.png](pics/6zdn.png)
+# Вывод:
+![img_1.png](pics/6zdn2.png)
+# *7 задание:
