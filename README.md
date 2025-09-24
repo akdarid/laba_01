@@ -24,5 +24,4 @@
 # *6 задание:
 ![img.png](pics/6zdn.png)
 # Вывод:
-![img_1.png](pics/6zdn2.png)
-# *7 задание:
+-
