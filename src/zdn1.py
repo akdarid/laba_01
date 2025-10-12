@@ -1,26 +1,43 @@
-def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
-    if not nums:
+
+empty_list = []
+def find_min_max(values):
+    if values == empty_list: 
         return "ValueError"
-    return(min(nums), max(nums))
-print(min_max([]))
+    return min(values), max(values)  
+def get_unique_sorted(values):
+    if values == empty_list: 
+        return "ValueError"  
+    return list(set(sorted(values)))  
 
-def unique_sorted(nums):
-    return (set(nums))
+def flatten_list(nested):
 
-a = [[1,2,3],[4,5,2],[7,5,9]]
+    if nested == empty_list: 
+        return "ValueError"  
+    flat_list = []
+    for sublist in nested: 
+        for item in sublist:
+            if not isinstance(item, int):  
+                return "TypeError" 
+            flat_list.append(item)
+    return flat_list
 
+print("find_min_max")
+print(find_min_max([3, -1, 5, 5, 0]))  
+print(find_min_max([42]))  
+print(find_min_max([-5, -2, -9]))  
+print(find_min_max([]))  
+print(" ")
 
-def flatten(mat: list[list | tuple]) -> list:
-    f = "1234567890"
-    ans = []
-    for i in mat:
-        for j in i:
-            if str(j) not in f:
-                return ("mudak")
-            else:
-                ans.append(j)
-    return ans
+print("get_unique_sorted")
+print(get_unique_sorted([3, 1, 2, 1, 3]))  
+print(get_unique_sorted([]))  
+print(get_unique_sorted([-1, -1, 0, 2, 2]))  
+print(get_unique_sorted([1.0, 1, 2.5, 2.5, 0])) 
 
+print(" ")
 
-
-
+print("flatten_list")
+print(flatten_list([[1, 2], [3, 4]]))  
+print(flatten_list([[1, 2], (3, 4, 5)]))  
+print(flatten_list([[1], [], [2, 3]]))  
+print(flatten_list([[[1, 2], "ab"]]))  
