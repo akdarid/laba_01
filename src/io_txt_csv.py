@@ -19,7 +19,7 @@ def write_csv(rows: list[tuple | list], path: str | Path, header: tuple[str, ...
             const = len(rows[0])
             for i in rows:
                 if len(i) != const:
-                    return ValueError
+                    raise ValueError
         f.writerows(rows)
 
 def ensure_parent_dir(path: str | Path) -> None:
