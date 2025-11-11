@@ -3,8 +3,19 @@ import csv
 import json
 import sys
 import os
+from pathlib import Path
 
-def json_to_csv(json_path: str, csv_path: str) -> None: #функция конвертанции JSON в CSV
+def check_file_extension(file_path: str, expected_extensions: tuple) -> bool:
+    return any(Path(file_path).suffix.lower().endswith(ext) for ext in expected_extensions)
+
+
+def json_to_csv(json_path: str, csv_path: str) -> None:
+    #функция конвертанции JSON в CSV
+
+
+    if not check_file_extension(json_path, ('.json',)):  #проверяем расширение входящего файла
+        raise ValueError(f"Входной файл не является JSON.")
+
     if not os.path.exists(json_path): #проверяет, существует ли файл по указанному пути
         raise FileNotFoundError #если не существует выдает ошибку
     if os.path.getsize(json_path) == 0: #получает размер файла в байтах и проверяет, равен ли размер нулю (пустой файл или нет)
