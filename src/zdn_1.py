@@ -9,7 +9,7 @@ def json_to_csv(json_path: str, csv_path: str) -> None: #функция конв
         raise FileNotFoundError #если не существует выдает ошибку
     if os.path.getsize(json_path) == 0: #получает размер файла в байтах и проверяет, равен ли размер нулю (пустой файл или нет)
         raise ValueError
-        sys.exit(1) #завершает программу с кодом ошибка 1
+
     with open(json_path, 'r', encoding='utf-8') as json_file: #безопасно открывае файл для прочтения(автомвтически закрывает после использовния #json_path - путь к файлу
         json_data = json.load(json_file) #закгружает и преобразовывает JSON данные в Python объект #json_data - переменная, содержащая данные из JSON файла
         if not all(type(x) == dict for x in json_data): #type(x) == dict - проверяет, является ли элемент словарем
@@ -17,7 +17,7 @@ def json_to_csv(json_path: str, csv_path: str) -> None: #функция конв
                                                         #all() - проверяет, что ВСЕ элементы соответствуют условию
                                                         #if not all() - если НЕ все элементы являются словарями
             raise ValueError #если не все элементы подходят под условие выдает ошибку
-            sys.exit(1)
+
 
     with open(csv_path, 'w', newline='', encoding='utf-8') as csvfile: #открывает CSV файл для записи(или замены)                                                                           #newline='' - убирает лишние пустые строки
         writer = csv.DictWriter(csvfile, fieldnames=json_data[0].keys()) #csv.DictWriter() - создает объект для записи CSV из словарей
@@ -28,16 +28,16 @@ def json_to_csv(json_path: str, csv_path: str) -> None: #функция конв
 def csv_to_json(csv_path: str, json_path: str) -> None: #функция конвертанции CSV в JSON
     if not os.path.exists(csv_path): #проверяет, существует ли файл по указанному пути
         raise FileNotFoundError #если не существует выдает ошибку
-        sys.exit(1) #завершает программу с кодом ошибка 1
+
     if os.path.getsize(csv_path) == 0: #получает размер файла в байтах и проверяет, равен ли размер нулю (пустой файл или нет)
         raise ValueError
-        sys.exit(1) #завершает программу с кодом ошибка 1
+
     with open(csv_path, 'r', encoding='utf-8') as csvfile: #безопасно открывае файл для прочтения(автомвтически закрывает после использовния #csv_path - путь к файлу
         reader = csv.reader(csvfile) #создает объект для чтения CSV
         header = next(reader, None) #читает первую строку(заголовок), NONE - значение по умолчанию, если файл пустой
         if not header: #проверяет, что заголовк есть
             raise ValueError #если заголовка нет выводит ошибку
-            sys.exit(1)
+
         reader = csv.DictReader(csvfile) #читает файл
         data = list(reader) #преобразовывет все данные в список
     with open(json_path, 'w', encoding='utf-8') as jsonfile:  #открывает JSON файл для записи(или замены)
